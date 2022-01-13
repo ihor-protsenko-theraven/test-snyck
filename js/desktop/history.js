@@ -209,8 +209,8 @@ $(function() {
     
         $.get(url, function(data){
             $('#tab-event-detail').trigger('click');
-            $('#load-content').html(data);
-            $('#tab-event-log').attr('href', $('#tab-event-log').attr('href').replace(/\d+$/, $this.attr('id')));
+            DOMPurify.sanitize($('#load-content').html(data));
+            DOMPurify.sanitize($('#tab-event-log').attr('href', $('#tab-event-log').attr('href').replace(/\d+$/, $this.attr('id'))));
             
             if ($('#tab-take-action').attr('href')!=null){
            	    $('#tab-take-action').attr('href', $('#tab-take-action').attr('href').replace(/\=.+/, "=" + $('#event-detail').data('session-state')+"&alertId="+$this.attr('id')+"&sessionId="+$this.data('session-id')));

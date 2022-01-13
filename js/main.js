@@ -4,6 +4,8 @@
  * @author Samuel Santiago <samuelsantia@gmail.com>
  */
 
+ import DOMPurify from 'dompurify';
+
 $.app.isMobile = {
 		Android: function() {
 	        return navigator.userAgent.match(/Android/i);
@@ -694,7 +696,7 @@ $(document).on('pageshow', '.day-story-list', function (event, ui) {
 // MONTH CALENDAR
 $(document).on('pageshow', '[data-role=page]', function (event, data) {
   var $page = $(this),
-      $popup = $page.find('#datepicker_calendar-popup'),
+      $popup = DOMPurify.sanitize($page.find('#datepicker_calendar-popup')),
       $calendar = $page.find('#calendar'),
       fc = $calendar.data('fullCalendar');
 
@@ -1850,7 +1852,7 @@ $(document).on('pagecreate', '.take-action', function (event, data) {
 $.app.requestingPhoto = false;
 $(document).on('pagecreate', '.take-photo', function (event, data) {
 	 var $page = $(this),
-	 	 $popup = $.app.notificationPopup;
+	 	 $popup = DOMPurify.sanitize($.app.notificationPopup);
 	 
 	 if ( $.app.requestingPhoto ) {
 		 $(this).find('.listview a').addClass('disabled'); 

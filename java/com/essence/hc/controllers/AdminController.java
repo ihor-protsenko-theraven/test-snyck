@@ -1187,7 +1187,8 @@ public class AdminController {
 		// User currentUser = (User) securityService.getPrincipal();
 		// SystemStatus systemStatus =
 		// patientService.getSystemStatus(residentId);
-
+		
+		actionName = StringEscapeUtils.escapeHtml4(actionName);
 		Action action = prepareAction(actionName, residentId, null);
 		action.getData();
 
@@ -1215,6 +1216,7 @@ public class AdminController {
 
 		logger.info("\n\n Executing Action {} \n\n", actionName);
 
+		actionName = StringEscapeUtils.escapeHtml4(actionName);
 		Action action = prepareAction(actionName, residentId, action_attributes);
 		action.getData();
 		boolean result = actionService.execute(action);
@@ -1505,7 +1507,8 @@ public class AdminController {
 		cal.add(Calendar.DATE, -1);
 		date = cal.getTime();
 		String formattedDate = targetFormat.format(date);
-
+		formattedDate = StringEscapeUtils.escapeHtml4(formattedDate);
+		residentId = StringEscapeUtils.escapeHtml4(residentId);
 		return "redirect:/admin/report/" + residentId + "/" + formattedDate;
 	}
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -225,7 +226,9 @@ public class ActionController {
 								RedirectAttributes ra) {
 		User currentUser = (User) securityService.getPrincipal();
 		Patient currentPatient = currentUser.getCurrentPatient();
+		StringEscapeUtils.escapeHtml4(actionName);
 		logger.info("\n\n Executing Action {} \n\n", actionName);
+
 
 		Action action = prepareAction(actionName, action_attributes);
 		action.getData();

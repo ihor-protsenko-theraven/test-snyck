@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 $.app = $.app || {};
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -99,7 +100,7 @@ $(function ($){
 				type: method.toUpperCase()
 		  })
 		  .done(function(data, textStatus, jQXhr){ 
-		  	$modal = $('#' + href.replace(/\//gi, '').split('?')[0]);
+		  	$modal = DOMPurify.sanitize($('#' + href.replace(/\//gi, '').split('?')[0]));
 			  if ($modal.length > 0) {
 				  $modal.find('.modal_content').html(data);
 				  $modal.trigger('modal:update').addClass('active').trigger('modal:show');

@@ -273,7 +273,8 @@ public class LoginController {
 
 	@RequestMapping(value = "encryptPwd/{pwdId}", method = RequestMethod.GET)
 	public @ResponseBody String ShowPwd(ModelMap model, @PathVariable("pwdId") String pwdId) {
-		return passwordEncoder.encodePassword(pwdId, "ADL");
+		final String passwordEncoder = StringEscapeUtils.escapeHtml4(passwordEncoder.encodePassword(pwdId, "ADL"));
+		return  passwordEncoder;
 	}
 
 	@RequestMapping(value = "loginErr", method = RequestMethod.GET, produces = "application/json")

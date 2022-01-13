@@ -1804,7 +1804,7 @@ function fetchHiddenParams(el) {
 
 // TAKE ACTION
 $(document).on('pagecreate', '.take-action', function (event, data) {
-	var $page = $(this),
+	var $page = DOMPurify.sanitize($(this)),
 		$popup = $page.find('#popup-takeaction')// .popup('option',
 												// 'transition', 'fade');
 												// //commented because a bug in

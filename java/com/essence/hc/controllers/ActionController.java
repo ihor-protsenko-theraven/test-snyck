@@ -226,16 +226,17 @@ public class ActionController {
 								RedirectAttributes ra) {
 		User currentUser = (User) securityService.getPrincipal();
 		Patient currentPatient = currentUser.getCurrentPatient();
-		StringEscapeUtils.escapeHtml4(actionName);
+	
 		logger.info("\n\n Executing Action {} \n\n", actionName);
 
-
+		actionName = StringEscapeUtils.escapeHtml4(actionName);
 		Action action = prepareAction(actionName, action_attributes);
 		action.getData();
 		boolean result = actionService.execute(action);
 		
 		model.addAttribute("action", action);
 		model.addAttribute("name_patient", currentPatient.getFirstName());
+		
 		
 		return actionName + ( result ? "_success" :  "_fail" );
     }	

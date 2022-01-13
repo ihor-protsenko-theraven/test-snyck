@@ -1675,7 +1675,7 @@ $(document).on('pageshow', '.step_count_chart', function (event, data) {
 			
 			function showErrorPopUp(message) {
 				
-				var $popup = $('#popup_call_fails');
+				var $popup = DOMPurify.sanitize($('#popup_call_fails'));
 				
 				if (message) {
 					$popup.find('.warning').html("<span class='icon icon-warning'></span>" + message);

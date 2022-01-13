@@ -2,6 +2,7 @@ package com.essence.hc.controllers.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -22,6 +23,12 @@ public class HelperController {
 	 * create redirect with redirectFlashAttributes
 	 */
 	public static String redirectWithFlashAttributes(RedirectAttributes redirectAttributes, String url, String messageCode, String messageTitleCode,String messageArguments) {
+
+		url = StringEscapeUtils.escapeHtml4(url);
+		messageCode = StringEscapeUtils.escapeHtml4(messageCode);
+		messageTitleCode = StringEscapeUtils.escapeHtml4(messageTitleCode);
+		messageArguments = StringEscapeUtils.escapeHtml4(messageArguments);
+		
 		return redirectWithFlashAttributes(redirectAttributes, url, messageCode, messageTitleCode, messageArguments, false);
 	}
 	

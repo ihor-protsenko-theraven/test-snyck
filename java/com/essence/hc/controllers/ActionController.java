@@ -203,6 +203,7 @@ public class ActionController {
 		User currentUser = (User) securityService.getPrincipal();
 		Patient currentPatient = currentUser.getCurrentPatient();
 		
+		actionName = StringEscapeUtils.escapeHtml4(actionName);
 		Action action = prepareAction(actionName, null);
 		action.getData();
 		

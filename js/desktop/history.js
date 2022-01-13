@@ -209,7 +209,7 @@ $(function() {
     
         $.get(url, function(data){
             $('#tab-event-detail').trigger('click');
-            $('#load-content').html(data).text();
+            $('#load-content').text(data);
             DOMPurify.sanitize($('#tab-event-log').attr('href', $('#tab-event-log').attr('href').replace(/\d+$/, $this.attr('id'))));
             
             if ($('#tab-take-action').attr('href')!=null){

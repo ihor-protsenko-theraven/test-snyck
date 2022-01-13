@@ -1,0 +1,16 @@
+[
+	{
+ 		"systemId": "cabd9b23-1f7b-4250-920e-25e9c05951d6",
+ 		"name": "Period_12",
+ 		"editable": true,
+ 		"is24Hours": false,
+ 		"startTime": "2015-01-01T10:00:00",
+ 		"endTime": "2015-01-01T17:30:00"
+	},
+	{
+	 	"systemId": "0f45c22d-1fd7-43f2-a5b2-0bd5d436cb89",
+	 	"name": "Period_03",
+	 	"editable": true,
+	 	"is24Hours": true
+	}
+]

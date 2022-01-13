@@ -1,3 +1,6 @@
+import DOMPurify from 'dompurify';
+var query = DOMPurify.sanitize(decodeURIComponent(window.location.search.match(/inputSearch=(.*?)(&|$)/)[1]).replace('+', ' '));
+
 var calculateEventLogHeight = function() {
     var $main_content    = $('.main_content');
     var $history_header  = $main_content.children('header');
@@ -93,7 +96,7 @@ $(function() {
     };
 
     var done = function(data) {
-        var $spinner = $('.history-list .list table tbody #history-list-spinner');
+        var $spinner = DOMPurify.sanitize($('.history-list .list table tbody #history-list-spinner'));
         
         $spinner.before(data);
         $('.history-list .list').getNiceScroll().resize();

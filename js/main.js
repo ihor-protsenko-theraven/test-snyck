@@ -2001,7 +2001,7 @@ $(document).on('pagecreate', '.photo-detail', function (event, data) {
 // BROADCAST MESSAGE POP UP / CLOSE EVENT POP UP
 $(document).on('popupcreate', '.take-action-popup, #closeAlarmPopup', function (event, ui) {
 	
-	var $popup  = $(this), 
+	var $popup  = DOMPurify.sanitize( $(this)), 
 		$radios = $popup.find(':radio'),
 		$text   = $popup.find(':text'),
 		$form   = $popup.find('form'),

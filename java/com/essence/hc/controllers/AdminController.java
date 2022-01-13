@@ -1978,8 +1978,9 @@ public class AdminController {
 			String redirect;
 
 			if (redirectURL != null) {
-				redirect = "redirect:" + redirectURL.substring(
-						redirectURL.indexOf(APPLICATION_NAME) + APPLICATION_NAME.length(), redirectURL.length());
+
+				redirect = StringEscapeUtils.escapeHtml("redirect:" + redirectURL.substring(
+						redirectURL.indexOf(APPLICATION_NAME) + APPLICATION_NAME.length(), redirectURL.length()));
 			} else {
 				redirect = "redirect:/admin/users";
 			}

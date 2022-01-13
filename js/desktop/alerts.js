@@ -1,8 +1,9 @@
+import DOMPurify from 'dompurify';
 $(function ($) {
 	var uuid = $.app.uid,
 		storageKey = "u"+uuid+"settings",
 		$headerNotifications = $('.main_header .notifications'),
-		$monitoring          = $('#monitoring'),
+		$monitoring          =  DOMPurify.sanitize($('#monitoring')),
 		$history             = $('#history'),
 		$refresh             = $('#refresh_button').fadeOut(0),
 		$expiredSessionModal = $('#expired-session-modal'),

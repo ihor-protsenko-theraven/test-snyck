@@ -1,6 +1,8 @@
 /**
  * Modals reports grafics
  */
+
+ import DOMPurify from 'dompurify';
 $(function ($) {
 	
 	if ( $('#monitoring').length || $('#analysis').length ) {
@@ -14,7 +16,7 @@ $(function ($) {
 	// DAY STORY
 	(function () {
 		if ( $('.day-story').length ) {
-			var $container = $('.day-story'),
+			var $container = DOMPurify.sanitize($('.day-story')),
 				intervalTiming = 250,
 				$bars, $points,
 				$lines;
@@ -284,7 +286,7 @@ $(function ($) {
 	// ACTIVITY LEVEL
 	(function () {
 		if ( $('.activity-level').length ) {
-			var $container = $('.activity-level'),
+			var $container =DOMPurify.sanitize($('.activity-level')),
 				$bars  = $container.find('.bar');
 			
 			setTimeout(function () {
@@ -299,7 +301,7 @@ $(function ($) {
 	// WEEKLY REPORT
 	(function () {
 		if ( $('.weekly-report').length ) {
-			var $container = $('.weekly-report'),
+			var $container = DOMPurify.sanitize($('.weekly-report')),
 				i, $grafic, $bars, $lines;
 			
 			var $datepicker     = $('#report_date');

@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 $.app = {};
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -204,7 +205,7 @@ $(function ($) {
 // AJAX FOR TABLE RESULTS (FIRST LOAD AND PAGINATION)
 $(function ($) {
   var $main_content = $('.main_content'),
-      $load         = $('#load'),
+      $load         = DOMPurify.sanitize($('#load')),
       $loadRow      = $('<tr>'
         +   '<td colspan="6" class="loadrow">'
         +     '<span class="icon drop_down"></span>'

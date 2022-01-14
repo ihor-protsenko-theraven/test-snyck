@@ -249,7 +249,7 @@ $(document)
 												if ($page.find('#splash').length > 0
 														&& (window.location.href.indexOf("login") <= -1)) {
 													var temp = DOMPurify.sanitize( window.location.origin);
-													var url = DOMPurify.sanitize(temp + window.location.pathname);
+													var url = temp + DOMPurify.sanitize(window.location.pathname);
 													document.location.replace(url);
 													console.log('splash');
 												} else {

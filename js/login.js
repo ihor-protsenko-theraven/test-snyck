@@ -1,3 +1,5 @@
+
+import DOMPurify from 'dompurify';
 var $docRoot = "/";
 
 var $postmateAvailable = isPostmateAvailable();
@@ -246,8 +248,8 @@ $(document)
 	
 												if ($page.find('#splash').length > 0
 														&& (window.location.href.indexOf("login") <= -1)) {
-													var temp = window.location.origin;
-													url = temp + window.location.pathname;
+													var temp = DOMPurify.sanitize( window.location.origin);
+													var url = DOMPurify.sanitize(temp + window.location.pathname);
 													document.location.replace(url);
 													console.log('splash');
 												} else {

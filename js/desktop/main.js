@@ -678,7 +678,7 @@ $(function ($) {
 
 // Table pagination on main_content
 $(function($) {
-    var $tableList = $('.main_content table[data-pagination]');
+    var $tableList = $(DOMPurify.sanitize('.main_content table[data-pagination]'));
     if ($tableList.length > 0) {
         var $scrollEl     = $tableList.parent();
         var requesting    = false;

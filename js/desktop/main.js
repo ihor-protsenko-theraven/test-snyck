@@ -588,7 +588,7 @@ $(function ($) {
 	
 	if ($allChecked.length === 0) {
 		$('#user-types_ROLE_MONITORED').prop('checked', '').uniform('update');
-		$('[id^=EnableActiveService').prop('checked', '').attr('disabled', 'disabled').uniform('update');
+		$('[id^=EnableActiveService]').prop('checked', '').attr('disabled', 'disabled').uniform('update');
 		
 		if ($userTypesChecks.filter(':checked').length === 0) {
 			$userTypesAllCheck.prop('checked', false).uniform('update');
@@ -596,7 +596,7 @@ $(function ($) {
 	} else  {
 		$userTypesAllCheck.prop('checked', true).uniform('update');
 		$('#user-types_ROLE_MONITORED').prop('checked', 'checked').uniform('update');
-		$('[id^=EnableActiveService').removeAttr('disabled').uniform('update');
+		$('[id^=EnableActiveService]').removeAttr('disabled').uniform('update');
 	}
   };
       
@@ -678,7 +678,7 @@ $(function ($) {
 
 // Table pagination on main_content
 $(function($) {
-    var $tableList = $(DOMPurify.sanitize('.main_content table[data-pagination]'));
+    var $tableList = $('.main_content table[data-pagination]');
     if ($tableList.length > 0) {
         var $scrollEl     = $tableList.parent();
         var requesting    = false;
@@ -704,7 +704,8 @@ $(function($) {
         
         var doneScrollPagination = function(data) {
         	var $data = $(data);
-           DOMPurify.sanitize( $tableList.find('#pagination-list-spinner').before($data));
+			$tableList = $tableList.find(DOMPurify.sanitize( '#pagination-list-spinner'))
+			$tableList.before($data);
             $tableList.triggerHandler('table:added_page', [ $data ]);
            // console.log("data size",$(data).filter('tr').size());
             

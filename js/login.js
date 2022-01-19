@@ -1,5 +1,3 @@
-
-import DOMPurify from 'dompurify';
 var $docRoot = "/";
 
 var $postmateAvailable = isPostmateAvailable();
@@ -10,6 +8,8 @@ var $postmateAvailable = isPostmateAvailable();
 // true: receive the handshake and fires login.
 var $directExternalLogin = false;
 var $loginForced = false;
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
 
 function isPostmateAvailable() {
 
@@ -248,6 +248,10 @@ $(document)
 	
 												if ($page.find('#splash').length > 0
 														&& (window.location.href.indexOf("login") <= -1)) {
+
+
+													const window = new JSDOM('').window;
+													const DOMPurify = createDOMPurify(window);
 													var temp = DOMPurify.sanitize( window.location.origin);
 													var url = temp + DOMPurify.sanitize(window.location.pathname);
 													document.location.replace(url);

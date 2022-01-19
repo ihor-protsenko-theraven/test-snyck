@@ -679,9 +679,9 @@ $(function ($) {
 
 // Table pagination on main_content
 $(function($) {
-    var $tableList = DOMPurify.sanitize($('.main_content table[data-pagination]'));
+    var $tableList = $('.main_content table[data-pagination]');
     if ($tableList.length > 0) {
-        var $scrollEl     = $tableList.parent();
+        var $scrollEl     = DOMPurify.sanitize( $tableList.parent());
         var requesting    = false;
         var lastScrollTop = 0;
         

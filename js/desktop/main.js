@@ -1,4 +1,3 @@
-import DOMPurify from 'dompurify';
 $.app = $.app || {};
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -681,7 +680,7 @@ $(function ($) {
 $(function($) {
     var $tableList = $('.main_content table[data-pagination]');
     if ($tableList.length > 0) {
-        var $scrollEl     = DOMPurify.sanitize( $tableList.parent());
+        var $scrollEl     = $tableList.parent();
         var requesting    = false;
         var lastScrollTop = 0;
         
@@ -705,8 +704,7 @@ $(function($) {
         
         var doneScrollPagination = function(data) {
         	var $data = $(data);
-        	
-            $tableList.find('#pagination-list-spinner').before($data);
+           DOMPurify.sanitize( $tableList.find('#pagination-list-spinner').before($data));
             $tableList.triggerHandler('table:added_page', [ $data ]);
            // console.log("data size",$(data).filter('tr').size());
             

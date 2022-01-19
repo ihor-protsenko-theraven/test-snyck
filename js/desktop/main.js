@@ -704,8 +704,7 @@ $(function($) {
         
         var doneScrollPagination = function(data) {
         	var $data = $(data);
-			$tableList = $tableList.find(DOMPurify.sanitize( '#pagination-list-spinner'))
-			$tableList.before($data);
+			tableList.find( '#pagination-list-spinner').before(DOMPurify.sanitize($data));
             $tableList.triggerHandler('table:added_page', [ $data ]);
            // console.log("data size",$(data).filter('tr').size());
             

@@ -1,5 +1,6 @@
 package com.essence.hc.interceptors;
 
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,7 +70,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 			}
 			
 			logger.info("Caregiver with forced mobile view trying to enter desktop view: redirect to mobile view");
-			String url = req.getRequestURI();
+			String url = URLEncoder.encode(req.getRequestURI(),"utf-8" );
 			url = url.substring(0, url.indexOf("/admin")) + "/home/main";
 			resp.sendRedirect(url);
 			return false;

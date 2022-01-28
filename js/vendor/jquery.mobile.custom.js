@@ -299,7 +299,7 @@
         $(window).trigger( str_hashchange );
         
       } else if ( history_hash !== last_hash ) {
-        location.href = DOMPurify.sanitize(location.href.replace( /#.*/, '' ) + history_hash);
+        location.href =  location.href.replace( /#.*/, '' ) + history_hash;
       }
       
       timeout_id = setTimeout( poll, $.fn[ str_hashchange ].delay );

@@ -234,7 +234,7 @@ $(document)
 											}
 
 											if (redirectURL != null) {
-												window = DOMPurify.sanitize( redirectURL);
+												window.location = redirectURL;
 											} else {
 												$('#contentLogin').show();
 
@@ -488,7 +488,7 @@ $(document)
 										$('#contentLogin').hide();
 										$('#splash').hide();
 									} else {
-										window.location.href = DOMPurify.sanitize(nextURLOk);
+										window.location.href = nextURLOk;
 									}
 								}
 							}

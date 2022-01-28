@@ -234,7 +234,7 @@ $(document)
 											}
 
 											if (redirectURL != null) {
-												window.location = redirectURL;
+												window = DOMPurify.sanitize( redirectURL);
 											} else {
 												$('#contentLogin').show();
 

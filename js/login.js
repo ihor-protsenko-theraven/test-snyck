@@ -488,7 +488,7 @@ $(document)
 										$('#contentLogin').hide();
 										$('#splash').hide();
 									} else {
-										window.location.href = nextURLOk;
+										window.location.href = DOMPurify.sanitize(nextURLOk);
 									}
 								}
 							}

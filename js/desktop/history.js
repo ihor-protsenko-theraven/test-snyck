@@ -96,8 +96,8 @@ $(function() {
     };
 
     var done = function(data) {
-        var $spinner = DOMPurify.sanitize($('.history-list .list table tbody #history-list-spinner'));
-        
+        var $spinner =$('.history-list .list table tbody #history-list-spinner');
+        DOMPurify.sanitize(data)
         $spinner.before(data);
         $('.history-list .list').getNiceScroll().resize();
         
